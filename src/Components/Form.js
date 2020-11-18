@@ -17,6 +17,7 @@ const Form = () => {
 
     const submitForm = (e) => {
         e.preventDefault()
+        console.log(movieName, urlMovie, msg)
         const config = {
             method: "POST",
             headers: {
@@ -24,14 +25,14 @@ const Form = () => {
             },
             body: JSON.stringify(users)
         };
-        const url = "https://post-a-form.herokuapp.com/api/movies";
+        const url = "https://post-a-form.herokuapp.com/api/movies/";
         fetch(url, config)
             .then((res) => res.json())
             .then((res) => {
               if (res.error) {
                 alert(res.error);
               } else {
-                alert(`The movie #${res} has been successfully added !`);
+                alert(`The movie #${movieName} has been successfully added !`);
               }
             })
             .catch((e) => {
@@ -67,6 +68,7 @@ const Form = () => {
               <label htmlFor="msg">Message</label>
               <textarea
                 type="text"
+                rows="5" cols="33"
                 name="msg"
                 value={msg}
                 onChange={handleChange}
