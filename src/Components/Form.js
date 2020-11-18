@@ -31,12 +31,12 @@ const Form = () => {
               if (res.error) {
                 alert(res.error);
               } else {
-                alert(`A message will be displayed when the movie #${res} has been successfully added !`);
+                alert(`The movie #${res} has been successfully added !`);
               }
             })
             .catch((e) => {
               console.error(e);
-              alert("A message will be displayed when the movie has been successfully added.");
+              alert("There was an error when adding the movie.");
             });
     }
 
