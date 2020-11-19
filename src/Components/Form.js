@@ -3,21 +3,21 @@ import './Form.css'
 
 const Form = () => {
     const user = {
-        movieName: "",
-        urlMovie:"",
-        msg:""
+        title: "",
+        poster: "",
+        comment: ""
     }
 
     const [users, setUsers] = useState(user)
-    const {movieName, urlMovie, msg} = users
+    const {title, poster, comment} = users
 
-    const handleChange = (e) => {
+    const onChange = (e) => {
         setUsers({...users, [e.target.name]: e.target.value})
     }
 
     const submitForm = (e) => {
         e.preventDefault()
-        console.log(movieName, urlMovie, msg)
+        console.log(title, poster, comment)
         const config = {
             method: "POST",
             headers: {
@@ -32,7 +32,7 @@ const Form = () => {
               if (res.error) {
                 alert(res.error);
               } else {
-                alert(`The movie #${movieName} has been successfully added !`);
+                alert(`The movie #${title} has been successfully added !`);
               }
             })
             .catch((e) => {
@@ -47,21 +47,23 @@ const Form = () => {
           <fieldset>
             <legend>Information</legend>
             <div className="form-data">
-              <label htmlFor="movieName">Your favorite movie</label>
+              <label htmlFor="title">Your favorite movie</label>
               <input
                 type="text"
-                name="movieName"
-                value={movieName}
-                onChange={handleChange}
+                id="title"
+                name="title"
+                value={title}
+                onChange={onChange}
               />
             </div>
             <div className="form-data">
-              <label htmlFor="urlMovie">Url movie</label>
+              <label htmlFor="poster">Url movie</label>
               <input
                 type="text"
-                name="urlMovie"
-                value={urlMovie}
-                onChange={handleChange}
+                id="poster"
+                name="poster"
+                value={poster}
+                onChange={onChange}
               />
             </div>
             <div className="form-data">
@@ -69,9 +71,10 @@ const Form = () => {
               <textarea
                 type="text"
                 rows="5" cols="33"
-                name="msg"
-                value={msg}
-                onChange={handleChange}
+                id="comment"
+                name="comment"
+                value={comment}
+                onChange={onChange}
               />
             </div>
             <hr />
